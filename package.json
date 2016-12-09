@@ -7,6 +7,14 @@
     "clean": "del ./output/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zp25/tools.git"
+  },
+  "keywords": [
+    "tools",
+    "imagemin"
+  ],
   "author": "zp25",
   "license": "MIT",
   "dependencies": {
@@ -17,5 +25,8 @@
     "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.0",
     "imagemin-webp": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=7.0.0"
   }
 }
