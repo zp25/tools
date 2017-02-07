@@ -28,9 +28,15 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "cz-conventional-changelog": "^1.2.0",
     "mocha": "^3.2.0"
   },
   "engines": {
     "node": ">=7.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
