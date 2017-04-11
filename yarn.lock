@@ -354,9 +354,9 @@ cwebp-bin@^3.1.0:
     bin-wrapper "^3.0.1"
     logalot "^2.0.0"
 
-cz-conventional-changelog@^1.2.0:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/cz-conventional-changelog/download/cz-conventional-changelog-1.2.0.tgz#2bca04964c8919b23f3fd6a89ef5e6008b31b3f8"
+cz-conventional-changelog@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/cz-conventional-changelog/download/cz-conventional-changelog-2.0.0.tgz#55a979afdfe95e7024879d2a0f5924630170b533"
   dependencies:
     conventional-commit-types "^2.0.0"
     lodash.map "^4.5.1"
@@ -926,9 +926,9 @@ imagemin-pngquant@^5.0.0:
     is-png "^1.0.0"
     pngquant-bin "^3.0.0"
 
-imagemin-svgo@^5.2.0:
-  version "5.2.0"
-  resolved "http://r.cnpmjs.org/imagemin-svgo/download/imagemin-svgo-5.2.0.tgz#5130614ac18cb7b2b1ca005386681c51ceb2bb34"
+imagemin-svgo@^5.2.1:
+  version "5.2.1"
+  resolved "http://registry.npm.taobao.org/imagemin-svgo/download/imagemin-svgo-5.2.1.tgz#74d593ce4cbe1b87efdb3d06a4a56078f71a8147"
   dependencies:
     is-svg "^2.0.0"
     svgo "^0.7.0"

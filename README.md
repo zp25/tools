@@ -4,7 +4,7 @@
 图片优化
 
 ~~~
-node --harmony-async-await imagemin [webp|compress]
+node imagemin [webp|compress]
 ~~~
 选择输出webp或压缩，默认都执行
 
