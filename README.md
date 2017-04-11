@@ -1,12 +1,31 @@
 # tools
 工具
 
+获取帮助
+
+~~~
+Usage: node help [options]
+
+Options:
+
+  - imagemin    图片优化
+  - base64      base64编码／解码
+~~~
+
 图片优化
 
 ~~~
 node imagemin [webp|compress]
 ~~~
 选择输出webp或压缩，默认都执行
+
+base64编码／解码
+
+~~~
+node base64 encode <string> [<encoding>]
+node base64 decode <string> [<encoding>]
+~~~
+encoding可选'utf8'(默认), 'utf16le'
 
 + [imagemin](https://github.com/imagemin/imagemin "imagemin")
 + [imagemin-webp](https://github.com/imagemin/imagemin-webp "imagemin-webp")
