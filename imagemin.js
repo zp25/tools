@@ -5,7 +5,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminOptipng = require('imagemin-optipng');
 // const imageminPngquant = require('imagemin-pngquant');
 const imageminSvgo = require('imagemin-svgo');
-const filesize = require('./utils/filesize');
+const { filesize } = require('./utils');
 
 const input = path.resolve(__dirname, 'input/images');
 const output = path.resolve(__dirname, 'output/images');

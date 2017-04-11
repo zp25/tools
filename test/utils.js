@@ -1,9 +1,9 @@
 const should = require('chai').should();
-const filesize = require('../utils/filesize');
+const { filesize } = require('../utils');
 
 describe('filesize', () => {
   it('文件小于1kb时应该返回false', () => {
-    const size = Math.pow(1024, 1) - 42;
+    const size = 1024 - 42;
     const result = filesize(size);
 
     result.should.be.false;
@@ -18,8 +18,8 @@ describe('filesize', () => {
 
   it('正确转换其他大小的文件', () => {
     const sizes = [
-      Math.pow(1024, 1),
-      Math.pow(1024, 1) + 42,
+      1024,
+      1024 + 42,
       Math.pow(1024, 2),
       Math.pow(1024, 2) + 42,
       Math.pow(1024, 3),
