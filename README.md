@@ -27,6 +27,14 @@ node base64 decode <string> [<encoding>]
 ~~~
 encoding可选'utf8'(默认), 'utf16le'
 
+## 文档
+使用jsdoc导出文档
+
+~~~
+npm run jsdoc
+~~~
+进入docs/目录查看
+
 + [imagemin](https://github.com/imagemin/imagemin "imagemin")
 + [imagemin-webp](https://github.com/imagemin/imagemin-webp "imagemin-webp")
 + [imagemin-mozjpeg](https://github.com/imagemin/imagemin-mozjpeg "imagemin-mozjpeg")
