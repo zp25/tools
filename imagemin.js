@@ -1,3 +1,5 @@
+/** @module imagemin */
+
 const path = require('path');
 const imagemin = require('imagemin');
 const imageminWebp = require('imagemin-webp');
@@ -12,7 +14,10 @@ const output = path.resolve(__dirname, 'output/images');
 
 /**
  * 反馈信息
- * @param {Array} files - imagemin返回
+ * @private
+ * @param {Object[]} files - imagemin返回结果
+ * @param {string} files[].path - 文件路径
+ * @param {Buffer} files[].data - 文件二进制数据
  */
 const info = (files) => {
   files.forEach((file) => {
@@ -45,7 +50,7 @@ const webp = async () => {
 };
 
 /**
- * 压缩
+ * 压缩图片
  */
 const compress = async () => {
   try {

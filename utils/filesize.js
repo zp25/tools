@@ -1,9 +1,11 @@
+/** @module utils/filesize */
+
 /**
  * 文件大小使用合适的单位表示
- * @param {Number} size 文件大小，Bytes
- * @return {(String|Boolean)} 转化结果，若小于1k返回false，最大单位gb
+ * @param {number} size - 文件大小，Bytes
+ * @return {string|false} 若文件小于1k返回false，最大单位gb
  */
-const filesize = (size) => {
+module.exports = (size) => {
   const units = ['b', 'kb', 'mb', 'gb'];
   const limit = units.length - 1;
   let r = size;
@@ -15,5 +17,3 @@ const filesize = (size) => {
 
   return i === 0 ? false : r.toFixed(2) + units[i];
 };
-
-module.exports = filesize;

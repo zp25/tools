@@ -4,7 +4,8 @@
   "description": "tools",
   "main": "index.js",
   "scripts": {
-    "clean": "del ./output/*",
+    "clean": "rimraf ./output/* ./docs/*",
+    "jsdoc": "jsdoc -r -c conf.json -d docs",
     "test": "mocha --harmony --check-leaks"
   },
   "repository": {
@@ -20,7 +21,6 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
-    "del-cli": "^0.2.1",
     "imagemin": "^5.2.2",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-optipng": "^5.2.1",
@@ -31,7 +31,10 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "cz-conventional-changelog": "^2.0.0",
-    "mocha": "^3.2.0"
+    "jsdoc": "^3.4.3",
+    "jsdoc-strip-async-await": "^0.1.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.6.1"
   },
   "engines": {
     "node": ">=7.6.0"
