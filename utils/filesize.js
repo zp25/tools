@@ -3,7 +3,7 @@
 /**
  * 文件大小使用合适的单位表示
  * @param {number} size - 文件大小，Bytes
- * @return {string|false} 若文件小于1k返回false，最大单位gb
+ * @return {(string|false)} 若文件小于1k返回false，最大单位gb
  */
 module.exports = (size) => {
   const units = ['b', 'kb', 'mb', 'gb'];
