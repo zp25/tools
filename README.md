@@ -1,5 +1,6 @@
 # tools
-工具
+
+[![Build Status](https://travis-ci.org/zp25/tools.svg?branch=master)](https://travis-ci.org/zp25/tools)
 
 获取帮助
 
@@ -35,6 +36,7 @@ npm run jsdoc
 ~~~
 进入docs/目录查看
 
+## 资源
 + [imagemin](https://github.com/imagemin/imagemin "imagemin")
 + [imagemin-webp](https://github.com/imagemin/imagemin-webp "imagemin-webp")
 + [imagemin-mozjpeg](https://github.com/imagemin/imagemin-mozjpeg "imagemin-mozjpeg")
