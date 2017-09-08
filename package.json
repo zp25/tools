@@ -4,23 +4,24 @@
   "description": "tools",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf ./output/* ./docs/*",
+    "clean": "rimraf output/*",
+    "test": "nyc mocha --harmony --check-leaks",
+    "prejsdoc": "rimraf docs/*",
     "jsdoc": "jsdoc -r -c jsdoc.json -d docs",
-    "test": "mocha --harmony --check-leaks"
+    "open": "open docs/index.html"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/zp25/tools.git"
   },
   "keywords": [
-    "tools",
     "imagemin",
     "base64"
   ],
   "author": "zp25",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.0.1",
+    "chalk": "^2.1.0",
     "imagemin": "^5.3.1",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-optipng": "^5.2.1",
@@ -29,11 +30,12 @@
     "imagemin-webp": "^4.0.0"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
+    "chai": "^4.1.2",
     "cz-conventional-changelog": "^2.0.0",
-    "jsdoc": "^3.4.3",
+    "jsdoc": "^3.5.4",
     "jsdoc-strip-async-await": "^0.1.0",
-    "mocha": "^3.4.2",
+    "mocha": "^3.5.0",
+    "nyc": "^11.2.1",
     "rimraf": "^2.6.1"
   },
   "engines": {

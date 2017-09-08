@@ -2,21 +2,21 @@ const should = require('chai').should();
 const { filesize } = require('../utils');
 
 describe('filesize', () => {
-  it('文件小于1kb时应该返回false', () => {
+  it('文件小于1kb时返回false', () => {
     const size = 1024 - 42;
     const result = filesize(size);
 
     result.should.be.false;
   });
 
-  it('文件大于等于1024gb时应该返回gb', () => {
+  it('文件大于等于1024gb时返回gb', () => {
     const sizes = [Math.pow(1024, 4), Math.pow(1024, 4) + 42];
     const result = sizes.map(size => filesize(size).slice(-2).toLowerCase());
 
     result.should.satisfy(units => units.every(unit => unit === 'gb'));
   });
 
-  it('正确转换其他大小的文件', () => {
+  it('正确转换其他大小的单位', () => {
     const sizes = [
       1024,
       1024 + 42,
