@@ -36,7 +36,9 @@
     "jsdoc-strip-async-await": "^0.1.0",
     "mocha": "^5.0.1",
     "nyc": "^11.4.1",
-    "rimraf": "^2.6.2"
+    "rewire": "^3.0.2",
+    "rimraf": "^2.6.2",
+    "sinon": "^4.4.2"
   },
   "engines": {
     "node": ">=8.9.4"
