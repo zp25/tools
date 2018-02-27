@@ -21,25 +21,25 @@
   "author": "zp25",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.1.0",
+    "chalk": "^2.3.1",
     "imagemin": "^5.3.1",
-    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-mozjpeg": "^7.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngquant": "^5.0.1",
-    "imagemin-svgo": "^5.2.2",
-    "imagemin-webp": "^4.0.0"
+    "imagemin-svgo": "^6.0.0",
+    "imagemin-webp": "^4.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "cz-conventional-changelog": "^2.0.0",
-    "jsdoc": "^3.5.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.2.1",
-    "rimraf": "^2.6.1"
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2"
   },
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=8.9.4"
   },
   "config": {
     "commitizen": {

@@ -31,7 +31,7 @@ encoding可选'utf8'(默认), 'utf16le'
 ## 文档
 使用jsdoc导出文档
 
-~~~
+~~~bash
 npm run jsdoc
 ~~~
 进入docs/目录查看
