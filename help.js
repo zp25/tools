@@ -8,10 +8,15 @@ const helpOpts = `
 `;
 
 const imageminOpts = `
-  Options:
+  Commands:
 
     - webp        webp输出
     - compress    压缩图片
+
+  Options:
+
+    --pngquant    默认，使用imagemin-pngquant
+    --optipng     使用imagemin-optipng
 `;
 
 const base64Opts = `
@@ -32,7 +37,7 @@ const help = {
     options: helpOpts,
   },
   imagemin: {
-    usage: 'node imagemin [options]',
+    usage: 'node imagemin [command] [options]',
     options: imageminOpts,
   },
   base64: {

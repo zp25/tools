@@ -16,15 +16,15 @@ Options:
 图片优化
 
 ~~~
-node imagemin [webp|compress]
+node imagemin [webp|compress] [--pngquant|--optipng]
 ~~~
 选择输出webp或压缩，默认都执行
 
 base64编码／解码
 
 ~~~
-node base64 encode <string> [<encoding>]
-node base64 decode <string> [<encoding>]
+node base64 encode <string> [encoding]
+node base64 decode <string> [encoding]
 ~~~
 encoding可选'utf8'(默认), 'utf16le'
 

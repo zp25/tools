@@ -6,7 +6,7 @@ const imagemin = require('imagemin');
 const imageminWebp = require('imagemin-webp');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminOptipng = require('imagemin-optipng');
-// const imageminPngquant = require('imagemin-pngquant');
+const imageminPngquant = require('imagemin-pngquant');
 const imageminSvgo = require('imagemin-svgo');
 const chalk = require('chalk');
 
@@ -86,16 +86,17 @@ const runWebp = async () => {
 /**
  * 压缩图片
  * @param {Array.<string>} patterns - minimatch
+ * @param {boolean} [optipng=false] - 是否使用imagemin-optipng
  * @return {Promise}
  */
-const compress = patterns => imagemin(patterns, output, {
+const compress = (patterns, optipng = false) => imagemin(patterns, output, {
   plugins: [
     imageminMozjpeg({
       progressive: true,
+      quality: 80,
     }),
-    imageminOptipng(),
-    // imageminPngquant(),
     imageminSvgo(),
+    ...(optipng ? [imageminOptipng()] : [imageminPngquant()])
   ]
 });
 
@@ -103,11 +104,11 @@ const compress = patterns => imagemin(patterns, output, {
  * 运行compress
  * @private
  */
-const runCompress = async () => {
-  const patterns = [`${input}/*.{jpg,png,svg}`];
+const runCompress = async (optipng) => {
+  const patterns = [`${input}/*.{jpg,jpeg,png,svg}`];
 
   try {
-    const files = await compress(patterns);
+    const files = await compress(patterns, optipng);
 
     const result = await Promise.all(info(files, true));
     console.log(`compress:\n${result.join('\n')}`);
@@ -117,14 +118,29 @@ const runCompress = async () => {
 };
 
 if (require.main === module) {
-  const opts = process.argv.slice(2);
+  const args = process.argv.slice(2);
 
-  if (opts.length === 0) {
+  let opts = [];
+  const cmd = args.reduce((prev, d) => {
+    const stdd = d.toLowerCase();
+
+    if (/^--\w+/.test(d)) {
+      opts = opts.concat(stdd);
+
+      return prev;
+    }
+
+    return prev.concat(stdd);
+  }, []);
+
+  const optipng = opts.includes('--optipng');
+
+  if (cmd.length === 0) {
     runWebp();
-    runCompress();
+    runCompress(optipng);
   } else {
-    opts.includes('webp') && runWebp();
-    opts.includes('compress') && runCompress();
+    cmd.includes('webp') && runWebp();
+    cmd.includes('compress') && runCompress(optipng);
   }
 } else {
   module.exports = { webp, compress };
