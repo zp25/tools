@@ -16,39 +16,52 @@ const input = path.resolve(__dirname, 'input/images');
 const output = path.resolve(__dirname, 'output/images');
 
 /**
+ * 统一文件大小输出格式
+ * @param {number} size - 文件大小
+ * @return {string}
+ */
+const hint = (size) => {
+  const result = chalk.green(filesize(size));
+
+  return size > 1024 ? `${size}B (${result})` : result;
+};
+
+/**
  * 反馈信息
  * @param {Object[]} files - imagemin返回结果
  * @param {string} files[].path - 文件路径
  * @param {Buffer} files[].data - 文件二进制数据
  * @param {boolean} [compare=false] - 是否显示原文件大小
- * @return {Array.<(Promise|string)>}
+ * @return {Array.<Promise>}
  */
 const info = (files, compare = false) => files.map((file) => {
   const {
-    data,
+    data: {
+      length: dstSize,
+    },
     path: filePath,
   } = file;
 
-  const size = chalk.green(filesize(data.length));
-  const hint = data.length > 1024 ? `${data.length}B (${size})` : size;
-  const filename = path.basename(filePath);
+  const dstHint = hint(dstSize);
+
+  const fname = path.basename(filePath);
+  const fnameHint = chalk.blue(fname);
 
   if (compare) {
     return new Promise((resolve, reject) => {
-      fs.stat(`${input}/${filename}`, (err, stat) => {
+      fs.stat(`${input}/${fname}`, (err, stat) => {
         if (err) {
           reject(err);
           return;
         }
 
-        const srcSize = chalk.green(filesize(stat.size));
-        const srcHint = stat.size > 1024 ? `${stat.size}B (${srcSize})` : srcSize;
+        const srcHint = hint(stat.size);
 
-        resolve(`\t${chalk.blue(filename)}: ${srcHint} -> ${hint}`);
+        resolve(`\t${fnameHint}: ${srcHint} -> ${dstHint}`);
       });
     });
   } else {
-    return `\t${chalk.blue(filename)}: ${hint}`;
+    return Promise.resolve(`\t${fnameHint}: ${dstHint}`);
   }
 });
 
@@ -77,7 +90,8 @@ const runWebp = async () => {
   try {
     const files = await webp(patterns);
 
-    console.log(`webp:\n${info(files).join('\n')}`);
+    const result = await Promise.all(info(files));
+    console.log(`webp:\n${result.join('\n')}`);
   } catch(err) {
     console.log(`webp: ${chalk.red(err.message)}`);
   }
@@ -133,14 +147,14 @@ if (require.main === module) {
     return prev.concat(stdd);
   }, []);
 
-  const optipng = opts.includes('--optipng');
+  const useOptipng = opts.includes('--optipng');
 
   if (cmd.length === 0) {
     runWebp();
-    runCompress(optipng);
+    runCompress(useOptipng);
   } else {
     cmd.includes('webp') && runWebp();
-    cmd.includes('compress') && runCompress(optipng);
+    cmd.includes('compress') && runCompress(useOptipng);
   }
 } else {
   module.exports = { webp, compress };
