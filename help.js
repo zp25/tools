@@ -46,14 +46,13 @@ const help = {
   },
 };
 
-const commands = Object.keys(help);
-
 const opt = process.argv[2];
-const getHelp = commands.includes(opt) ? help[opt] : help.help;
+const getHelp = {}.hasOwnProperty.call(help, opt) ? help[opt] : help.help;
 
 // output
-console.log(`\n  Usage: ${getHelp.usage}`);
+const { usage, options } = getHelp;
 
-console.log(getHelp.options);
+console.log(`\n  Usage: ${usage}`);
+console.log(options);
 
 console.log(`  Source: ${chalk.bold('https://github.com/zp25/tools')}\n`);
