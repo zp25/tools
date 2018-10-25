@@ -8,7 +8,9 @@
     "test": "nyc mocha --harmony --check-leaks",
     "prejsdoc": "rimraf docs/*",
     "jsdoc": "jsdoc -r -c jsdoc.json -d docs",
-    "open": "open docs/index.html"
+    "open": "open docs/index.html",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,8 @@
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
-    "imagemin-webp": "^4.1.0"
+    "imagemin-webp": "^4.1.0",
+    "snyk": "^1.105.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -47,5 +50,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
