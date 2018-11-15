@@ -9,6 +9,7 @@ const imageminOptipng = require('imagemin-optipng');
 const imageminPngquant = require('imagemin-pngquant');
 const imageminSvgo = require('imagemin-svgo');
 const chalk = require('chalk');
+const ora = require('ora');
 
 const { filesize } = require('./utils');
 
@@ -86,14 +87,15 @@ const webp = patterns => imagemin(patterns, output, {
  */
 const runWebp = async () => {
   const patterns = [`${input}/*.{jpg,png}`];
+  const spinner = ora('processing webp').start();
 
   try {
     const files = await webp(patterns);
-
     const result = await Promise.all(info(files));
-    console.log(`webp:\n${result.join('\n')}`);
+
+    spinner.succeed(`webp:\n${result.join('\n')}`);
   } catch(err) {
-    console.log(`webp: ${chalk.red(err.message)}`);
+    spinner.fail(`webp: ${chalk.red(err.message)}`);
   }
 };
 
@@ -120,14 +122,15 @@ const compress = (patterns, optipng = false) => imagemin(patterns, output, {
  */
 const runCompress = async (optipng) => {
   const patterns = [`${input}/*.{jpg,jpeg,png,svg}`];
+  const spinner = ora('processing compress').start();
 
   try {
     const files = await compress(patterns, optipng);
-
     const result = await Promise.all(info(files, true));
-    console.log(`compress:\n${result.join('\n')}`);
+
+    spinner.succeed(`compress:\n${result.join('\n')}`);
   } catch(err) {
-    console.log(`compress: ${chalk.red(err.message)}`);
+    spinner.fail(`compress: ${chalk.red(err.message)}`);
   }
 };
 

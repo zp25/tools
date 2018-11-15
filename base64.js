@@ -1,6 +1,7 @@
 /** @module base64 */
 
 const StringDecoder = require('string_decoder').StringDecoder;
+const ora = require('ora');
 
 /**
  * base64编码
@@ -31,16 +32,23 @@ if (require.main === module) {
   const opts = process.argv.slice(2);
   const [method, str, encoding='utf8'] = opts;
 
-  let result = str;
+  const spinner = ora('processing').start();
 
-  if (method === 'encode') {
-    result = encodeBase64(str, encoding);
-  } else if (method === 'decode') {
-    result = decodeBase64(str, encoding);
+  try {
+    let result = str;
+
+    if (method === 'encode') {
+      result = encodeBase64(str, encoding);
+    } else if (method === 'decode') {
+      result = decodeBase64(str, encoding);
+    } else {
+      throw new Error('invalid command');
+    }
+
+    spinner.succeed(result);
+  } catch(err) {
+    spinner.fail(err.message);
   }
-
-  // 输出
-  console.log(`\n${result}\n`);
 } else {
   module.exports = { encodeBase64, decodeBase64 };
 }
