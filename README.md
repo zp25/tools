@@ -2,41 +2,55 @@
 
 [![Build Status](https://travis-ci.org/zp25/tools.svg?branch=master)](https://travis-ci.org/zp25/tools)
 
+克隆并进入目录
+
+~~~bash
+npm install
+npm link
+~~~
+
 获取帮助
 
+~~~bash
+tools -h
 ~~~
-Usage: node help [options]
 
-Options:
+base64编码/解码
 
-  - imagemin    图片优化
-  - base64      base64编码／解码
+~~~bash
+tools base64 encode <string>
+tools base64 decode <string> --encoding=utf8
+
+# 获取帮助
+tools base64 -h
 ~~~
+
+encoding可选'utf8'(默认), 'utf16le'
 
 图片优化
 
-~~~
-node imagemin [webp|compress] [--pngquant|--optipng]
-~~~
-选择输出webp或压缩，默认都执行
+~~~bash
+tools imagemin webp --input=./src --output=./dest
+tools imagemin compress --quality=70 --optipng
 
-base64编码／解码
+# 获取帮助
+tools imagemin -h
+~~~
 
-~~~
-node base64 encode <string> [encoding]
-node base64 decode <string> [encoding]
-~~~
-encoding可选'utf8'(默认), 'utf16le'
+选择输出webp或压缩。默认pngquant有损，可选optipng无损
 
 ## 文档
+
 使用jsdoc导出文档
 
 ~~~bash
 npm run jsdoc
 ~~~
+
 进入docs/目录查看
 
 ## 资源
+
 + [imagemin](https://github.com/imagemin/imagemin "imagemin")
 + [imagemin-webp](https://github.com/imagemin/imagemin-webp "imagemin-webp")
 + [imagemin-mozjpeg](https://github.com/imagemin/imagemin-mozjpeg "imagemin-mozjpeg")
