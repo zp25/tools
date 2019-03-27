@@ -38,7 +38,7 @@ InvalidOptionError.prototype = Object.create(Error.prototype);
 InvalidOptionError.prototype.constructor = InvalidOptionError;
 
 /**
- * 非法选项
+ * 程序运行被打断
  * @param {string} message
  * @ignore
  */
