@@ -1,5 +1,8 @@
 const should = require('chai').should();
-const { encodeBase64, decodeBase64 } = require('../base64');
+const {
+  encodeBase64,
+  decodeBase64,
+} = require('../src/base64');
 
 describe('base64', () => {
   const raw = 'hello你好';

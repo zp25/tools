@@ -1,8 +1,15 @@
 {
   "name": "tools",
   "version": "0.0.1",
-  "description": "tools",
+  "description": "cli tools",
+  "keywords": [
+    "imagemin",
+    "base64"
+  ],
   "main": "index.js",
+  "bin": {
+    "tools": "./bin/cli.js"
+  },
   "scripts": {
     "clean": "rimraf output/*",
     "test": "nyc mocha --harmony --check-leaks",
@@ -14,33 +21,30 @@
     "type": "git",
     "url": "https://github.com/zp25/tools.git"
   },
-  "keywords": [
-    "imagemin",
-    "base64"
-  ],
   "author": "zp25",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "imagemin": "^6.0.0",
+    "chalk": "^2.4.2",
+    "imagemin": "^6.1.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^6.0.0",
-    "imagemin-pngquant": "^6.0.0",
+    "imagemin-pngquant": "^7.0.0",
     "imagemin-svgo": "^7.0.0",
-    "imagemin-webp": "^4.1.0",
-    "ora": "^3.0.0"
+    "imagemin-webp": "^5.0.0",
+    "ora": "^3.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
     "rewire": "^4.0.1",
-    "rimraf": "^2.6.2",
-    "sinon": "^7.1.1"
+    "rimraf": "^2.6.3",
+    "sinon": "^7.3.0"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=8.15.0"
   }
 }

@@ -1,71 +1,100 @@
 const should = require('chai').should();
 const sinon = require('sinon');
 const rewire = require('rewire');
-const imagemin = rewire('../imagemin');
+
+const imagemin = rewire('../src/imagemin');
 
 const { webp, compress } = imagemin;
 
 describe('imagemin', () => {
-  let spy = null;
   let revert = null;
+
+  let spy = null;
+  let spyWebp = null;
+  let spyMoz = null;
+  let spyPngquant = null;
+  let spyOptipng = null;
 
   before(() => {
     spy = sinon.spy();
+    spyWebp = sinon.spy();
+    spyMoz = sinon.spy();
+    spyPngquant = sinon.spy();
+    spyOptipng = sinon.spy();
 
     revert = imagemin.__set__({
       imagemin: spy,
-      imageminWebp: () => 'webp',
-      imageminMozjpeg: () => 'mozjpeg',
-      imageminOptipng: () => 'optipng',
-      imageminPngquant: () => 'pngquant',
-      imageminSvgo: () => 'svgo',
+      imageminWebp: spyWebp,
+      imageminMozjpeg: spyMoz,
+      imageminOptipng: spyOptipng,
+      imageminPngquant: spyPngquant,
     });
   });
 
   afterEach(() => {
     spy.resetHistory();
+    spyWebp.resetHistory();
+    spyMoz.resetHistory();
+    spyPngquant.resetHistory();
+    spyOptipng.resetHistory();
   });
 
   after(() => {
     revert();
   });
 
-  it('webp, compress都调用imagemin模块', () => {
-    webp();
+  it('input可接收string或string[]，使用时总是转化为数组', () => {
+    webp('webp');
+    webp(['webp[]']);
+
+    compress('compress');
+    compress(['compress[]']);
+
+    const result = [
+      spy.firstCall.calledWith(['webp']),
+      spy.secondCall.calledWith(['webp[]']),
+      spy.thirdCall.calledWith(['compress']),
+      spy.lastCall.calledWith(['compress[]']),
+    ];
+
+    result.should.eql([true, true, true, true]);
+  });
+
+  it('webp可配置quality', () => {
+    const quality = 'quality';
+
+    webp(undefined, undefined, { quality });
+
+    spyWebp.calledOnceWith(sinon.match({ quality })).should.be.true;
+  });
+
+  it('mozjpeg可配置quality', () => {
+    const quality = 'quality';
+
+    compress(undefined, undefined, { quality });
+
+    spyMoz.calledOnceWith(sinon.match({ quality })).should.be.true;
+  });
+
+  it('compress默认使用pngquant', () => {
     compress();
 
-    spy.calledTwice.should.be.true;
+    const result = [
+      spyPngquant.calledOnce,
+      spyOptipng.notCalled,
+    ];
+
+    result.should.eql([true, true]);
   });
 
-  it('webp使用imagemin-webp', () => {
-    webp();
+  it('compress可配置使用optipng', () => {
+    compress(undefined, undefined, { optipng: true });
 
-    const { plugins } = spy.args[0][2];
+    const result = [
+      spyPngquant.notCalled,
+      spyOptipng.calledOnce,
+    ];
 
-    plugins.should.eql(['webp']);
-  });
-
-  it('compress默认使用imagemin-mozjpeg, imagemin-pngquant, imagemin-svgo', () => {
-    compress();
-
-    const { plugins } = spy.args[0][2];
-
-    plugins.length.should.equal(3);
-
-    plugins.should.include('mozjpeg');
-    plugins.should.include('pngquant');
-    plugins.should.include('svgo');
-  });
-
-  it('compress第二个参数传入true可使用imagemin-optipng', () => {
-    compress(undefined, true);
-
-    const { plugins } = spy.args[0][2];
-
-    plugins.length.should.equal(3);
-
-    plugins.should.include('mozjpeg');
-    plugins.should.include('optipng');
-    plugins.should.include('svgo');
+    result.should.eql([true, true]);
   });
 });
