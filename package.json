@@ -11,6 +11,7 @@
     "tools": "./bin/cli.js"
   },
   "scripts": {
+    "upgrade-interactive": "npm-check -u",
     "clean": "rimraf output/*",
     "test": "nyc mocha --harmony --check-leaks",
     "prejsdoc": "rimraf docs/*",
@@ -39,10 +40,11 @@
     "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
     "mocha": "^6.0.2",
+    "npm-check": "^5.9.0",
     "nyc": "^13.3.0",
     "rewire": "^4.0.1",
     "rimraf": "^2.6.3",
-    "sinon": "^7.3.0"
+    "sinon": "^7.3.1"
   },
   "engines": {
     "node": ">=8.15.0"
