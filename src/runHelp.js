@@ -34,6 +34,12 @@ const imageminOpts = `
     --optipng\t压缩png时使用imagemin-optipng
 `;
 
+const todayOpts = `
+  Options:
+
+    --gwt\tGreenwich Mean Time
+`;
+
 const help = {
   help: {
     usage: 'tools <command> -h',
@@ -48,7 +54,8 @@ const help = {
     options: imageminOpts,
   },
   today: {
-    usage: 'tools today',
+    usage: 'tools today <options>',
+    options: todayOpts,
   },
 };
 

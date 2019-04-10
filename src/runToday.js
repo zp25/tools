@@ -1,21 +1,19 @@
-const { interrupt } = require('../src/parse');
+const { interrupt, getConfig } = require('../src/parse');
 const date = require('../index').cal;
-const {
-  InterruptError,
-} = require('../src/errors');
+const { InterruptError } = require('../src/errors');
 
 /**
- * 毫秒时间戳转秒
- * @param {Date} d - 时间对象
- * @return {number}
- * @throws {Error} 数据格式不合规
+ * 获取date配置
+ * @param {Array.<string>} config - 选项和配置组成的数组
+ * @return {Object.<string, string>} 有效的配置
+ * @ignore
  */
-const mstos = d => {
-  if (!(d instanceof Date)) {
-    throw new Error('not a Date');
-  }
+const resolveDateConfig = (config = []) => {
+  const optsMap = {
+    gmt: '--gmt',
+  };
 
-  return Math.floor(d.valueOf() / 1000);
+  return getConfig(optsMap, config);
 };
 
 const runToday = (method) => {
@@ -23,11 +21,12 @@ const runToday = (method) => {
     throw new InterruptError('interrupt', 'today');
   }
 
-  const ts = mstos(new Date());
+  const { gmt } = resolveDateConfig(method ? [method] : []);
+
   const {
     gregorian,
     julian,
-  } = date(ts);
+  } = date(Date.now(), gmt && 'America/Danmarkshavn');
 
   return `\n\t格里历\t${gregorian}\n\t儒略历\t${julian}\n`;
 };

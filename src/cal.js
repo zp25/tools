@@ -1,29 +1,39 @@
 /** @module cal */
 
+const gap = 13 * 24 * 3600000;
+
 /**
  * 当前日期
  * @desc 仅1901-2099年
- * @param {number} ts - 秒级时间戳
+ * @param {number} ts - 毫秒时间戳
  * @return {Object}
  * @throws {Error} 参数错误
  */
-function date(ts) {
+function date(ts, tz = 'Asia/Shanghai') {
   if (
     typeof ts !== 'number'
-    || ts < -2177452800 // 1901
-    || ts > 4102444799 // 2099
+    || ts < Date.UTC(1901, 0, 1)
+    || ts > Date.UTC(2099, 11, 31, 23, 59, 59, 999)
   ) {
     throw new Error('参数错误');
   }
 
-  const gregorian = new Date(ts * 1000).toDateString();
-  const day = gregorian.slice(0, 3);
+  const config = {
+    timeZone: tz,
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
 
-  const julian = new Date((ts - 13 * 24 * 3600) * 1000).toDateString();
+  const gregorian = new Date(ts).toLocaleDateString('en-US', config);
+  const weekday = gregorian.slice(0, 4);
+
+  const julian = new Date(ts - gap).toLocaleDateString('en-US', config);
 
   return {
     gregorian,
-    julian: `${day} ${julian.slice(4)}`,
+    julian: weekday + julian.slice(4),
   };
 }
 

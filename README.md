@@ -43,9 +43,10 @@ tools imagemin -h
 
 ~~~bash
 tools today
+tools today --gmt
 ~~~
 
-返回格里历和儒略历日期
+返回格里历和儒略历日期，默认时区Asia/Shanghai，可选择查看GMT日期
 
 ## 文档
 
