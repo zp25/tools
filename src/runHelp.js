@@ -5,6 +5,7 @@ const helpOpts = `
 
     - base64\tbase64编码/解码
     - imagemin\t图片优化
+    - today\t当前日期
 `;
 
 const base64Opts = `
@@ -46,6 +47,9 @@ const help = {
     usage: 'tools imagemin <command> <options>',
     options: imageminOpts,
   },
+  today: {
+    usage: 'tools today',
+  },
 };
 
 module.exports = (opt) => {
@@ -56,7 +60,7 @@ module.exports = (opt) => {
 
   return `
   Usage: ${usage}
-${options}
+${options || ''}
   Source: ${chalk.bold('https://github.com/zp25/tools')}
 `;
 };

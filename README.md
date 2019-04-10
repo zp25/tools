@@ -39,6 +39,14 @@ tools imagemin -h
 
 选择输出webp或压缩。默认pngquant有损，可选optipng无损
 
+当前日期
+
+~~~bash
+tools today
+~~~
+
+返回格里历和儒略历日期
+
 ## 文档
 
 使用jsdoc导出文档
@@ -59,3 +67,5 @@ npm run jsdoc
 + [imagemin-optipng lossless](https://github.com/imagemin/imagemin-optipng "imagemin-optipng")
 + [imagemin-pngquant lossy](https://github.com/imagemin/imagemin-pngquant "imagemin-pngquant")
 + [imagemin-svgo](https://github.com/imagemin/imagemin-svgo "imagemin-svgo")
++ [儒略历](https://zh.wikipedia.org/wiki/%E5%84%92%E7%95%A5%E6%9B%86 "儒略历")
++ [格里历](https://zh.wikipedia.org/wiki/%E6%A0%BC%E9%87%8C%E6%9B%86 "格里历")
