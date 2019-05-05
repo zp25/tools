@@ -37,7 +37,7 @@ const imageminOpts = `
 const todayOpts = `
   Options:
 
-    --gwt\tGreenwich Mean Time
+    --gmt\tGreenwich Mean Time
 `;
 
 const help = {
