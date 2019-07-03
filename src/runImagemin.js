@@ -44,25 +44,25 @@ const hint = (size, warning = false) => {
 /**
  * 反馈信息
  * @param {Object[]} files - imagemin返回结果
- * @param {string} files[].path - 文件路径
  * @param {Buffer} files[].data - 文件二进制数据
+ * @param {string} files[].sourcePath - 文件输入路径
+ * @param {string} files[].destinationPath - 文件输出路径
  * @param {boolean} [compare=false] - 是否显示原文件大小
  * @return {Array.<Promise>}
  */
-const info = (files, { compare, input }) => files.map((file) => {
+const info = (files, { compare }) => files.map((file) => {
   const {
     data: {
       length: dstSize,
     },
-    path: filePath,
+    sourcePath,
   } = file;
 
-  const fname = path.basename(filePath);
-  const fnameHint = chalk.blue(fname);
+  const fnameHint = chalk.blue(path.basename(sourcePath));
 
   if (compare) {
     return new Promise((resolve, reject) => {
-      fs.stat(`${input}/${fname}`, (err, { size }) => {
+      fs.stat(sourcePath, (err, { size }) => {
         if (err) {
           reject(err);
           return;
@@ -114,7 +114,6 @@ const runImagemin = async (method, config) => {
 
   const result = await Promise.all(info(files, {
     compare: method === 'compress',
-    input,
   }));
 
   return `${method}:\n${result.join('\n')}`;

@@ -21,7 +21,8 @@ const webp = (input, output, config = {}) => {
     quality = '75',
   } = config;
 
-  return imagemin(patterns, output, {
+  return imagemin(patterns, {
+    destination: output,
     plugins: [
       imageminWebp({
         quality,
@@ -48,14 +49,17 @@ const compress = (input, output, config = {}) => {
     optipng = false,
   } = config;
 
-  return imagemin(patterns, output, {
+  return imagemin(patterns, {
+    destination: output,
     plugins: [
       imageminMozjpeg({
         progressive: true,
         quality,
       }),
       imageminSvgo(),
-      ...(optipng ? [imageminOptipng()] : [imageminPngquant()])
+      ...(optipng ? [imageminOptipng()] : [imageminPngquant({
+        quality: [0.3, 0.5]
+      })])
     ]
   });
 };
