@@ -45,7 +45,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "husky": "^3.0.0",
-    "jsdoc": "^3.6.2",
+    "jsdoc": "^3.6.3",
     "jsdoc-strip-async-await": "^0.1.0",
     "mocha": "^6.1.4",
     "npm-check": "^5.9.0",
