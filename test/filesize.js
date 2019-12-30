@@ -1,5 +1,5 @@
 const should = require('chai').should();
-const filesize = require('../src/filesize');
+const filesize = require('../utils/filesize');
 
 describe('filesize', () => {
   it('文件小于1KiB时返回字节数', () => {

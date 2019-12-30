@@ -5,7 +5,7 @@ const {
   InvalidMethodError,
   InvalidOptionError,
   InterruptError,
-} = require('../src/errors');
+} = require('../utils/errors');
 
 const runBase64 = rewire('../src/runBase64');
 

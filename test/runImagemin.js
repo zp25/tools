@@ -6,7 +6,7 @@ const {
   InvalidMethodError,
   InvalidOptionError,
   InterruptError,
-} = require('../src/errors');
+} = require('../utils/errors');
 
 chai.use(chaiAsPromised);
 const should = chai.should();

@@ -3,8 +3,8 @@ const {
   interrupt,
   getConfig,
   findOptionDescription,
-} = require('../src/parse');
-const { InvalidOptionError } = require('../src/errors');
+} = require('../utils/parse');
+const { InvalidOptionError } = require('../utils/errors');
 
 const optsMap = {
   foo: '-f',

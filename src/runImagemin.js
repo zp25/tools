@@ -1,16 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const { interrupt, getConfig } = require('../src/parse');
-const filesize = require('../src/filesize');
-const {
-  webp,
-  compress
-} = require('../index').imagemin;
-const {
-  InvalidMethodError,
-  InterruptError,
-} = require('../src/errors');
+const { interrupt, getConfig } = require('../utils/parse');
+const filesize = require('../utils/filesize');
+const { InvalidMethodError, InterruptError } = require('../utils/errors');
+const { webp, compress } = require('./imagemin');
 
 /**
  * 获取imagemin配置

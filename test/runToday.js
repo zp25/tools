@@ -1,11 +1,9 @@
 const should = require('chai').should();
 const sinon = require('sinon');
 const rewire = require('rewire');
-const date = require('../src/cal');
-const {
-  InterruptError,
-} = require('../src/errors');
+const { InterruptError } = require('../utils/errors');
 
+const date = require('../src/cal');
 const runToday = rewire('../src/runToday');
 
 describe('runToday', () => {

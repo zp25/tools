@@ -1,6 +1,6 @@
-const { interrupt, getConfig } = require('../src/parse');
-const date = require('../index').cal;
-const { InterruptError } = require('../src/errors');
+const { interrupt, getConfig } = require('../utils/parse');
+const { InterruptError } = require('../utils/errors');
+const date = require('./cal');
 
 /**
  * 获取date配置

@@ -1,13 +1,10 @@
-const { interrupt, getConfig } = require('../src/parse');
-const {
-  encodeBase64,
-  decodeBase64,
-} = require('../index').base64;
+const { interrupt, getConfig } = require('../utils/parse');
 const {
   InvalidMethodError,
   InvalidOptionError,
   InterruptError,
-} = require('../src/errors');
+} = require('../utils/errors');
+const { encodeBase64, decodeBase64 } = require('./base64');
 
 /**
  * 获取base64配置

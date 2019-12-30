@@ -6,11 +6,8 @@ const runBase64 = require('../src/runBase64');
 const runImagemin = require('../src/runImagemin');
 const runToday = require('../src/runToday');
 
-const { interrupt } = require('../src/parse');
-const {
-  InvalidScriptError,
-  InterruptError,
-} = require('../src/errors');
+const { interrupt } = require('../utils/parse');
+const { InvalidScriptError, InterruptError } = require('../utils/errors');
 
 const output = (result, {
   spinner,
