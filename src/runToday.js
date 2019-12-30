@@ -16,6 +16,9 @@ const resolveDateConfig = (config = []) => {
   return getConfig(optsMap, config);
 };
 
+/**
+ * @param {string} method - today命令仅有一个配置信息
+ */
 const runToday = (method) => {
   if (interrupt(method)) {
     throw new InterruptError('interrupt', 'today');

@@ -76,11 +76,7 @@ const info = (files, { compare }) => files.map((file) => {
 });
 
 const runImagemin = async (method, config) => {
-  if (!method) {
-    throw new InvalidMethodError(`empty method`);
-  }
-
-  if (interrupt(method)) {
+  if (!method || interrupt(method)) {
     throw new InterruptError('interrupt', 'imagemin');
   }
 

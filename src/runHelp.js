@@ -6,6 +6,7 @@ const helpOpts = `
     - base64\tbase64编码/解码
     - imagemin\t图片优化
     - today\t当前日期
+    - zxcvbn\t密码强度
 `;
 
 const base64Opts = `
@@ -40,6 +41,12 @@ const todayOpts = `
     --gmt\tGreenwich Mean Time
 `;
 
+const zxcvbnOpts = `
+  Options:
+
+    -v, --verbose
+`;
+
 const help = {
   help: {
     usage: 'tools <command> -h',
@@ -56,6 +63,10 @@ const help = {
   today: {
     usage: 'tools today <options>',
     options: todayOpts,
+  },
+  zxcvbn: {
+    usage: 'tools zxcvbn <options> <password>',
+    options: zxcvbnOpts,
   },
 };
 

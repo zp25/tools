@@ -43,11 +43,8 @@ describe('runImagemin', () => {
     revert();
   });
 
-  it('method空抛出InvalidMethodError', () => {
-    runImagemin().should.be.rejectedWith(InvalidMethodError);
-  });
-
-  it('method为-h/--help抛出InterruptError', () => {
+  it('method空或为-h/--help抛出InterruptError', () => {
+    runImagemin().should.be.rejectedWith(InterruptError);
     runImagemin('-h').should.be.rejectedWith(InterruptError);
     runImagemin('--help').should.be.rejectedWith(InterruptError);
   });

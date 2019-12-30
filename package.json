@@ -5,7 +5,8 @@
   "keywords": [
     "imagemin",
     "base64",
-    "today"
+    "today",
+    "zxcvbn"
   ],
   "main": "index.js",
   "bin": {
@@ -56,6 +57,6 @@
     "sinon": "^8.0.1"
   },
   "engines": {
-    "node": ">=8.15.0"
+    "node": ">=10.18.0"
   }
 }

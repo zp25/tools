@@ -5,6 +5,7 @@ const runHelp = require('../src/runHelp');
 const runBase64 = require('../src/runBase64');
 const runImagemin = require('../src/runImagemin');
 const runToday = require('../src/runToday');
+const runZxcvbn = require('../src/runZxcvbn');
 
 const { interrupt } = require('../utils/parse');
 const { InvalidScriptError, InterruptError } = require('../utils/errors');
@@ -37,7 +38,11 @@ const main = async (script, method, input) => {
       const result = await runImagemin(method, input);
       output(result, { spinner });
     } else if (script === 'today') {
+      // 仅接收一个option
       output(runToday(method), { spinner, type: 'stop' });
+    } else if (script === 'zxcvbn') {
+      // 需接收password，可接收一个option
+      output(runZxcvbn([method, ...input]), { spinner, type: 'stop' });
     } else if (script === undefined || interrupt(script)) {
       throw new InterruptError();
     } else {

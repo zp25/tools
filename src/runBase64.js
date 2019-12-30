@@ -22,11 +22,7 @@ const resolveBase64Config = (config = []) => {
 };
 
 const runBase64 = (method, config) => {
-  if (!method) {
-    throw new InvalidMethodError(`empty method`);
-  }
-
-  if (interrupt(method)) {
+  if (!method || interrupt(method)) {
     throw new InterruptError('interrupt', 'base64');
   }
 

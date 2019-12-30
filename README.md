@@ -48,6 +48,15 @@ tools today --gmt
 
 返回格里历和儒略历日期，默认时区Asia/Shanghai，可选择查看GMT日期
 
+密码强度
+
+~~~bash
+tools zxcvbn <password>
+tools zxcvbn --verbose <password>
+~~~
+
+返回密码强度信息
+
 ## 文档
 
 使用jsdoc导出文档
@@ -70,3 +79,4 @@ npm run jsdoc
 + [imagemin-svgo](https://github.com/imagemin/imagemin-svgo "imagemin-svgo")
 + [儒略历](https://zh.wikipedia.org/wiki/%E5%84%92%E7%95%A5%E6%9B%86 "儒略历")
 + [格里历](https://zh.wikipedia.org/wiki/%E6%A0%BC%E9%87%8C%E6%9B%86 "格里历")
++ [zxcvbn](https://github.com/dropbox/zxcvbn "zxcvbn")

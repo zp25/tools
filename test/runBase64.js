@@ -34,16 +34,12 @@ describe('runBase64', () => {
     revert();
   });
 
-  it('method空抛出InvalidMethodError', () => {
-    const result = () => { runBase64(); };
-
-    result.should.throw(InvalidMethodError);
-  });
-
-  it('method为-h/--help抛出InterruptError', () => {
+  it('method空或为-h/--help抛出InterruptError', () => {
+    const resultEmpty = () => { runBase64(); };
     const resultShort = () => { runBase64('-h'); };
     const result = () => { runBase64('--help'); };
 
+    resultEmpty.should.throw(InterruptError);
     resultShort.should.throw(InterruptError);
     result.should.throw(InterruptError);
   });
