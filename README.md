@@ -80,3 +80,4 @@ npm run jsdoc
 + [儒略历](https://zh.wikipedia.org/wiki/%E5%84%92%E7%95%A5%E6%9B%86 "儒略历")
 + [格里历](https://zh.wikipedia.org/wiki/%E6%A0%BC%E9%87%8C%E6%9B%86 "格里历")
 + [zxcvbn](https://github.com/dropbox/zxcvbn "zxcvbn")
++ [uuid](https://github.com/kelektiv/node-uuid "uuid")
