@@ -38,7 +38,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "imagemin-pngquant": "^8.0.0",
-    "imagemin-svgo": "^7.0.0",
+    "imagemin-svgo": "^7.1.0",
     "imagemin-webp": "^5.1.0",
     "ora": "^4.0.3",
     "zxcvbn": "^4.4.2"
