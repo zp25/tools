@@ -34,13 +34,13 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",
-    "imagemin": "^7.0.1",
-    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
     "imagemin-optipng": "^7.1.0",
-    "imagemin-pngquant": "^8.0.0",
+    "imagemin-pngquant": "^10.0.0",
     "imagemin-svgo": "^7.0.0",
-    "imagemin-webp": "^5.1.0",
-    "ora": "^4.0.3",
+    "imagemin-webp": "^7.0.0",
+    "ora": "^6.0.1",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
